@@ -1,5 +1,6 @@
 import random
 import pygame
+import utils
 
 size_x = 626
 size_y = 832
@@ -12,7 +13,7 @@ class Accidentado(pygame.sprite.Sprite):
         super().__init__()
 
         # Cargamos la imagen
-        self.image = pygame.image.load("img/coche-roto.png").convert_alpha()
+        self.image = pygame.image.load(utils.ruta_relativa("img/coche-roto.png")).convert_alpha()
 
         # Limita tamaño
         self.image = pygame.transform.scale(self.image, (75, 115))

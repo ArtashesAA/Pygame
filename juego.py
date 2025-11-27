@@ -1,5 +1,6 @@
 import pygame
 import accidentado, jugador
+import utils
 
 class Juego:
     def __init__(self):
@@ -102,7 +103,7 @@ class Juego:
         self.clock = pygame.time.Clock()
 
         # Fondo de pantalla
-        self.fondo = pygame.image.load("img/carretera.jpg").convert()
+        self.fondo = pygame.image.load(utils.ruta_relativa("img/carretera.jpg")).convert()
 
         # Grupos
         self.all_sprite_list = pygame.sprite.Group()
@@ -122,3 +123,5 @@ class Juego:
 
         # Control bucle principal
         self.done = False
+
+    

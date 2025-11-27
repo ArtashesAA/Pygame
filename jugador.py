@@ -1,4 +1,5 @@
 import pygame
+import utils
 
 size_x = 626
 size_y = 832
@@ -10,7 +11,7 @@ class Jugador(pygame.sprite.Sprite):
         self.velocidad_coche = 2.5
 
         # Cargamos la imagen
-        self.image = pygame.image.load("img/coche.png").convert_alpha()
+        self.image = pygame.image.load(utils.ruta_relativa("img/coche.png")).convert_alpha()
 
         # Limita tamaño
         self.image = pygame.transform.scale(self.image, (75, 115))
