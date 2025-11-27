@@ -35,17 +35,6 @@ class Accidentado(pygame.sprite.Sprite):
         if self.rect.top > size_y:
             self.kill()
 
-    def colocado_principal(self, grupo):
-        colocado = False
-    
-        while not colocado:
-            self.rect.x = random.randrange(0, size_x - self.rect.width)
-            self.rect.y = random.randrange(0, 250)
-
-            # Evitar solapar accidentados
-            if not pygame.sprite.spritecollideany(self, grupo):
-                colocado = True
-
     # Crear accidentados
     def crearAccidentados(self, grupo):
         colocado = False
