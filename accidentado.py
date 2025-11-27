@@ -12,7 +12,7 @@ class Accidentado(pygame.sprite.Sprite):
         super().__init__()
 
         # Cargamos la imagen
-        self.image = pygame.image.load("coche-roto.png").convert_alpha()
+        self.image = pygame.image.load("img/coche-roto.png").convert_alpha()
 
         # Limita tamaño
         self.image = pygame.transform.scale(self.image, (75, 115))
@@ -28,6 +28,7 @@ class Accidentado(pygame.sprite.Sprite):
         # Máscara para que no tome el cuadrado completo de la imagen coche-roto.png
         self.mask = pygame.mask.from_surface(self.image)
 
+    # Actualizar accidentados
     def update(self):
         self.rect.y += self.speed_y
 

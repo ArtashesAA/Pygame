@@ -28,6 +28,7 @@ class Juego:
                     if event.key == pygame.K_SPACE:   # Reiniciar al pulsar ESPACIO
                         self.iniciar_juego()
 
+        # Si no se ha chocado
         if self.estado == "jugando":
             # Dibujar fondo
             self.screen.blit(self.fondo, [0, 0])
@@ -70,9 +71,10 @@ class Juego:
             self.screen.blit(texto1, (self.size_x//2 - texto1.get_width()//2, 300))
             self.screen.blit(texto2, (self.size_x//2 - texto2.get_width()//2, 380))
 
-            pygame.display.flip()      # <<< FALTABA
+            pygame.display.flip()
             self.clock.tick(60) 
 
+    # Iniciar el juego
     def iniciar_juego(self):
         pygame.init()
 
@@ -100,7 +102,7 @@ class Juego:
         self.clock = pygame.time.Clock()
 
         # Fondo de pantalla
-        self.fondo = pygame.image.load("carretera.jpg").convert()
+        self.fondo = pygame.image.load("img/carretera.jpg").convert()
 
         # Grupos
         self.all_sprite_list = pygame.sprite.Group()
