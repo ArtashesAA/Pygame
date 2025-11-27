@@ -8,28 +8,32 @@ accidentado_list = pygame.sprite.Group()
 all_sprite_list = pygame.sprite.Group()
 
 class Accidentado(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, grupo_acc, velocidad):
         super().__init__()
 
         # Cargamos la imagen
         self.image = pygame.image.load("coche-roto.png").convert_alpha()
 
         # Limita tamaño
-        self.image = pygame.transform.scale(self.image, (120, 160))
+        self.image = pygame.transform.scale(self.image, (75, 115))
 
         # Posicionamiento sprite
         self.rect = self.image.get_rect()
 
         # Velocidad de bajada
-        self.speed_y = 2
+        self.speed_y = velocidad
+
+        self.grupo_acc = grupo_acc
+
+        # Máscara para que no tome el cuadrado completo de la imagen coche-roto.png
+        self.mask = pygame.mask.from_surface(self.image)
 
     def update(self):
         self.rect.y += self.speed_y
 
+        # Una vez se salen de pantalla, se borran y se crean nuevos
         if self.rect.top > size_y:
-            # Obtener el grupo REAL del sprite
-            grupo_acc = self.groups()[0]
-            self.reset_posicion(grupo_acc)
+            self.kill()
 
     def colocado_principal(self, grupo):
         colocado = False
@@ -42,8 +46,8 @@ class Accidentado(pygame.sprite.Sprite):
             if not pygame.sprite.spritecollideany(self, grupo):
                 colocado = True
 
-    # Regenerar accidentados
-    def reset_posicion(self, grupo):
+    # Crear accidentados
+    def crearAccidentados(self, grupo):
         colocado = False
         while not colocado:
             self.rect.x = random.randrange(0, size_x - self.rect.width)
@@ -52,6 +56,3 @@ class Accidentado(pygame.sprite.Sprite):
             # Comprobar colisión con otros del grupo
             if not pygame.sprite.spritecollideany(self, grupo):
                 colocado = True
-
-        # Velocidad de bajada
-        self.speed_y = 2
